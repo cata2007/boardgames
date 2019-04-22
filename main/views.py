@@ -28,3 +28,9 @@ def person(request):
     form = PersonForm()
 
  return render(request, 'main/contact_form.html', {'form': form})
+
+from django.shortcuts import render
+
+def persons(request):
+    persons = Person.objects.all()
+    return render(request, 'main/list.html', locals())
