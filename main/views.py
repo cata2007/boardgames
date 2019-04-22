@@ -34,3 +34,12 @@ from django.shortcuts import render
 def persons(request):
     persons = Person.objects.all()
     return render(request, 'main/list.html', locals())
+
+def deleteperson(request, id):
+    #if request.method == 'GET':
+    print(id)
+    print(Person.objects.all())
+    Person.objects.all().filter(pk=int(id)).delete()
+    print(Person.objects.all())
+    persons = Person.objects.all()
+    return render(request, 'main/list.html', {'persons': persons})
