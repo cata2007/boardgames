@@ -32,8 +32,9 @@ def person(request):
 from django.shortcuts import render
 
 def persons(request):
-    persons = Person.objects.all()
-    return render(request, 'main/list.html', locals())
+    if request.method == 'GET':
+     persons = Person.objects.all()
+     return render(request, 'main/list.html', {'persons': persons})
 
 def deleteperson(request, id):
     #if request.method == 'GET':
